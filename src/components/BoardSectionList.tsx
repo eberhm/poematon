@@ -80,12 +80,6 @@ const BoardSectionList = () => {
             (item) => item.id !== active.id
           ),
         ],
-    
-        // [activeContainer]: [
-        //   ...boardSection[activeContainer].filter(
-        //     (item) => item.id
-        //   ),
-        // ],
         [overContainer]: [
           ...boardSection[overContainer].slice(0, overIndex),
           boardSections[activeContainer][activeIndex],
@@ -127,14 +121,19 @@ const BoardSectionList = () => {
       
 
       // O aquí
-      setBoardSections((boardSection) => ({
+      setBoardSections((boardSection) => {
+        return ({
         ...boardSection,
         [overContainer]: arrayMove(
           boardSection[overContainer],
           activeIndex,
           overIndex
         ),
-      }));
+        "Versos": [
+          ...initialBoardSections['Versos']
+        ]
+        })
+      });
     }
 
     setActiveTaskId(null);
