@@ -1,7 +1,19 @@
-## React Drag and Drop Examples
+## Poematon
 
-### Code samples using DNDKit for kanban drag and drop functionality
+### Proyecto Poematon para <pon aqui nombre del evento>
 
-### Resources
+Cool explicacion de la propuesta
 
-[https://dndkit.com/]
+### Local dev
+
+Instala el proyecto
+
+```sh
+npm install
+```
+
+Ejecutarlo en local
+
+```sh
+npm start
+```
