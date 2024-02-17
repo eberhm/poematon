@@ -4,5 +4,7 @@ function printDiv(div) {
     var x = document.getElementById("final");
     window.print();
 
-   
+    setTimeout(() => {
+        document.location.reload();
+      }, 5000);
 }
