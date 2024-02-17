@@ -33,7 +33,6 @@ const PoemSection = ({ tasks }: PoemSectionProps) => {
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 3}}>
               <SortableTaskItem id={task.id}>
-
                 <TaskItem task={task} />
               </SortableTaskItem>
             </Box>

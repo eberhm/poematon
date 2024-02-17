@@ -17,18 +17,18 @@ import {
 } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates, arrayMove } from '@dnd-kit/sortable';
 import { INITIAL_TASKS } from '../data';
-import { BoardSections as BoardSectionsType, TaskId } from '../types';
-import { getTaskById } from '../utils/tasks';
+import { BoardSections as BoardSectionsType, Task, TaskId } from '../types';
+import { getVerseById } from '../utils/tasks';
 import { findBoardSectionContainer, initializeBoard } from '../utils/board';
 import TaskItem from './TaskItem';
 import VersesSection from './VersesSection';
 import PoemSection from './PoemSection';
 
-const POEM_IDS_DELTA = 3000
+const initialBoardSections = initializeBoard();
 
 const PoematonSectionList = () => {
-  const tasks = INITIAL_TASKS;
-  const initialBoardSections = initializeBoard();
+  const availableVerses = INITIAL_TASKS;
+  
   const [boardSections, setBoardSections] =
     useState<BoardSectionsType>(initialBoardSections);
 
@@ -42,26 +42,17 @@ const PoematonSectionList = () => {
   );
 
   const handleDragStart = ({ active }: DragStartEvent) => {
-    if (active.id as number > POEM_IDS_DELTA) {
-      // I'm dragging from Versos, create a new task in poems
-      
-      //create a new task (verse)
-      // add it to the list of verses
-
-    }
-
     setActiveTaskId(active.id as TaskId);
   };
 
   const handleDragOver = ({ active, over }: DragOverEvent) => {
-    // Find the containers
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as number
+      active.id as TaskId
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as number
+      over?.id as TaskId
     );
 
     if (
@@ -80,10 +71,6 @@ const PoematonSectionList = () => {
       
       
       const getActiveContainerElements = () => {
-        // if (activeContainer === "Versos") {
-        //   return initialBoardSections["Versos"]
-        // }
-
         return [
           ...boardSection[activeContainer].filter(
             (item) => item.id !== active.id
@@ -95,7 +82,6 @@ const PoematonSectionList = () => {
         const activeItems = boardSection[activeContainer];
         const overItems = boardSection[overContainer];
 
-        // Find the indexes for the items
         const activeIndex = activeItems.findIndex(
           (item) => item.id === active.id
         );
@@ -113,12 +99,15 @@ const PoematonSectionList = () => {
       }
 
       
-
-      // O aquí
-      return {
+      const newBoardSection = {
         ...boardSection,
         [activeContainer]: getActiveContainerElements(),
         [overContainer]: getOverContainerElements(),
+      }
+
+      return {
+        ...newBoardSection,
+        Versos: calculateVersosSectionByPoem(newBoardSection.Poema)
       };
     });
   };
@@ -151,16 +140,19 @@ const PoematonSectionList = () => {
       if (activeIndex !== overIndex) {
       
 
-      // O aquí
       setBoardSections((boardSection) => {
+        const newBoardSection = {
+          ...boardSection,
+          [overContainer]: arrayMove(
+            boardSection[overContainer],
+            activeIndex,
+            overIndex
+          )
+        } as const
+
         return ({
-        ...boardSection,
-        // this is opnly to reorder. It should always happen
-        [overContainer]: arrayMove(
-          boardSection[overContainer],
-          activeIndex,
-          overIndex
-        ),
+          ...newBoardSection,
+          Versos: calculateVersosSectionByPoem(newBoardSection.Poema)
         })
       });
     }
@@ -172,7 +164,7 @@ const PoematonSectionList = () => {
     ...defaultDropAnimation,
   };
 
-  const task = activeTaskId ? getTaskById(tasks, activeTaskId) : null;
+  const task = activeTaskId ? getVerseById(availableVerses, activeTaskId) : null;
 
   return (
     <Container>
@@ -186,7 +178,7 @@ const PoematonSectionList = () => {
         <Grid container spacing={4}>
             <Grid item xs={6} key="Versos">
               <VersesSection
-                tasks={initialBoardSections['Versos']}
+                tasks={calculateVersosSectionByPoem(boardSections.Poema)}
               />
             </Grid>
             <Grid item xs={6} key="Versos">
@@ -202,5 +194,16 @@ const PoematonSectionList = () => {
     </Container>
   );
 };
+
+const calculateVersosSectionByPoem = (poema: Task[]) => {
+  return initialBoardSections.Versos.map(item => {
+    const id = poema.find(poemVerse => poemVerse.id === item.id) ? item.id + '-inPoem' + Date.now(): item.id
+
+    return {
+      ...item,
+      id
+    }
+  })
+}
 
 export default PoematonSectionList;

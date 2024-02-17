@@ -1,5 +1,5 @@
 
-export type TaskId = number
+export type TaskId = string
 export type Task = {
   id: TaskId;
   sourceId?: TaskId
