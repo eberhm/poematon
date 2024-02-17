@@ -26,7 +26,8 @@ function secondPassed() {
   } else { 
     seconds--; 
     if (seconds==10){
-      audio.play();
+      //audio.play();
+      console.log('beep')
     }
   } 
 } 
