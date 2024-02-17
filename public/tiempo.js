@@ -1,12 +1,13 @@
 var seconds = 30; //número de segundos a contar
-//const audio = new Audio("sound/10s.mp3");
+const audio = new Audio("sound/10s.mp3");
+var countdownTimer;
 
 const boton = document.getElementById("empezar");
 const div = document.getElementById("inicial");
 
 boton.addEventListener("click", function(){
   div.classList.add("ocultar");
-  var countdownTimer = setInterval(secondPassed, 1000);
+  countdownTimer = setInterval(secondPassed, 1000);
 });
 
 function secondPassed() {
@@ -18,11 +19,8 @@ function secondPassed() {
   } 
   document.getElementById('tiempo').innerHTML = minutes + ":" +     remainingSeconds; 
   if (seconds == 0) { 
-    clearInterval(countdownTimer); 
-      refresh = setTimeout(refrescar, 5000);
-      function refrescar(){
-        clearTimeout(refresh)
-      }
+    clearInterval(countdownTimer);
+    printDiv('Poema');
   } else { 
     seconds--; 
     if (seconds==10){
