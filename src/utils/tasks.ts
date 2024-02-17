@@ -1,9 +1,5 @@
-import { Task, Status } from '../types';
+import { Task, TaskId } from '../types';
 
-export const getTasksByStatus = (tasks: Task[], status: Status) => {
-  return tasks.filter((task) => task.status === status);
-};
-
-export const getTaskById = (tasks: Task[], id: string) => {
+export const getTaskById = (tasks: Task[], id: TaskId) => {
   return tasks.find((task) => task.id === id);
 };

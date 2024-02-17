@@ -1,12 +1,13 @@
-export type Status = 'Versos' | 'Poema';
 
+export type TaskId = number
 export type Task = {
-  id: string;
+  id: TaskId;
+  sourceId?: TaskId
   title: string;
   description: string;
-  status: Status;
 };
 
 export type BoardSections = {
-  [name: string]: Task[];
+  Versos: Task[];
+  Poema: Task[];
 };

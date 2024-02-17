@@ -1,30 +1,23 @@
-import { BoardSections, Status, Task } from '../types';
-import { BOARD_SECTIONS } from '../constants';
-import { getTasksByStatus } from './tasks';
+import { BoardSections, TaskId } from '../types';
+import { INITIAL_TASKS } from '../data';
 
-export const initializeBoard = (tasks: Task[]) => {
-  const boardSections: BoardSections = {};
-
-  Object.keys(BOARD_SECTIONS).forEach((boardSectionKey) => {
-    //console.log(boardSectionKey)
-    boardSections[boardSectionKey] = getTasksByStatus(
-      tasks,
-      boardSectionKey as Status
-    );
-  });
-
-  return boardSections;
+export const initializeBoard = (): BoardSections => {
+  return {
+    Versos: INITIAL_TASKS,
+    Poema: []
+  }
 };
 
 export const findBoardSectionContainer = (
   boardSections: BoardSections,
-  id: string
+  id: TaskId
 ) => {
   if (id in boardSections) {
-    return id;
+    // why do we need this???
+    return id as unknown as 'Versos' | 'Poema';
   }
 
-  const container = Object.keys(boardSections).find((key) =>
+  const container = (['Versos', 'Poema'] as const).find((key) =>
     boardSections[key].find((item) => item.id === id)
   );
   return container;

@@ -10,29 +10,26 @@ import { Task } from '../types';
 import TaskItem from './TaskItem';
 import SortableTaskItem from './SortableTaskItem';
 
-type BoardSectionProps = {
-  id: string;
-  title: string;
+type PoemSectionProps = {
   tasks: Task[];
 };
-const var1= 1;
 
-const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
+const PoemSection = ({ tasks }: PoemSectionProps) => {
   const { setNodeRef } = useDroppable({
-    id,
+    id: "Poema",
   });
 
   return (
     <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }}>
       <Typography variant="h6" sx={{ mb: 3 }}>
-        {title}
+       Poema
       </Typography>
       <SortableContext
-        id={id}
+        id={"Poema"}
         items={tasks}
         strategy={verticalListSortingStrategy}
       >
-        <div id={id} ref={setNodeRef}>
+        <div id={"Poema"} ref={setNodeRef}>
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 3}}>
               <SortableTaskItem id={task.id}>
@@ -47,4 +44,4 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
   );
 };
 
-export default BoardSection;
+export default PoemSection;

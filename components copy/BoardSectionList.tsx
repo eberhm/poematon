@@ -16,20 +16,25 @@ import {
   defaultDropAnimation,
 } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates, arrayMove } from '@dnd-kit/sortable';
-import { INITIAL_TASKS } from '../data';
-import { BoardSections as BoardSectionsType } from '../types';
-import { getTaskById } from '../utils/tasks';
-import { findBoardSectionContainer, initializeBoard } from '../utils/board';
+import { INITIAL_TASKS } from '../src/data';
+import { BoardSections as BoardSectionsType, TaskId } from '../src/types';
+import { getTaskById } from '../src/utils/tasks';
+import { findBoardSectionContainer, initializeBoard } from '../src/utils/board';
 import BoardSection from './BoardSection';
 import TaskItem from './TaskItem';
 
+const POEM_IDS_DELTA = 3000
+
 const BoardSectionList = () => {
   const tasks = INITIAL_TASKS;
-  const initialBoardSections = initializeBoard(INITIAL_TASKS);
+  const initialBoardSections = initializeBoard(INITIAL_TASKS, {
+    Poem: "Poem",
+    Verses: "Verses"
+  });
   const [boardSections, setBoardSections] =
     useState<BoardSectionsType>(initialBoardSections);
 
-  const [activeTaskId, setActiveTaskId] = useState<null | string>(null);
+  const [activeTaskId, setActiveTaskId] = useState<null | TaskId>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -39,18 +44,26 @@ const BoardSectionList = () => {
   );
 
   const handleDragStart = ({ active }: DragStartEvent) => {
-    setActiveTaskId(active.id as string);
+    if (active.id as number > POEM_IDS_DELTA) {
+      // I'm dragging from Versos, create a new task in poems
+      
+      //create a new task (verse)
+      // add it to the list of verses
+
+    }
+
+    setActiveTaskId(active.id as TaskId);
   };
 
   const handleDragOver = ({ active, over }: DragOverEvent) => {
     // Find the containers
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as string
+      active.id as number
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as string
+      over?.id as number
     );
 
     if (
@@ -63,31 +76,51 @@ const BoardSectionList = () => {
 
     setBoardSections((boardSection) => {
       console.log('boardSection', boardSection)
-      const activeItems = boardSection[activeContainer];
-      const overItems = boardSection[overContainer];
+      
+      
 
-      // Find the indexes for the items
-      const activeIndex = activeItems.findIndex(
-        (item) => item.id === active.id
-      );
-      const overIndex = overItems.findIndex((item) => item.id !== over?.id);
+      
+      
+      const getActiveContainerElements = () => {
+        // if (activeContainer === "Versos") {
+        //   return initialBoardSections["Versos"]
+        // }
 
-      // O aquí
-      return {
-        ...boardSection,
-        [activeContainer]: [
+        return [
           ...boardSection[activeContainer].filter(
             (item) => item.id !== active.id
           ),
-        ],
-        [overContainer]: [
+        ]
+      }
+
+      const getOverContainerElements = () => {
+        const activeItems = boardSection[activeContainer];
+        const overItems = boardSection[overContainer];
+
+        // Find the indexes for the items
+        const activeIndex = activeItems.findIndex(
+          (item) => item.id === active.id
+        );
+
+        const overIndex = overItems.findIndex((item) => item.id !== over?.id);
+
+        return [
           ...boardSection[overContainer].slice(0, overIndex),
           boardSections[activeContainer][activeIndex],
           ...boardSection[overContainer].slice(
             overIndex,
             boardSection[overContainer].length
           ),
-        ],
+        ]
+      }
+
+      
+
+      // O aquí
+      return {
+        ...boardSection,
+        [activeContainer]: getActiveContainerElements(),
+        [overContainer]: getOverContainerElements(),
       };
     });
   };
@@ -96,11 +129,11 @@ const BoardSectionList = () => {
     
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as string
+      active.id as TaskId
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as string
+      over?.id as TaskId
     );
     console.log(active.id )
     if (
@@ -122,16 +155,14 @@ const BoardSectionList = () => {
 
       // O aquí
       setBoardSections((boardSection) => {
-        return ({
-        ...boardSection,
-        [overContainer]: arrayMove(
-          boardSection[overContainer],
-          activeIndex,
-          overIndex
-        ),
-        "Versos": [
-          ...initialBoardSections['Versos']
-        ]
+          return ({
+          ...boardSection,
+          // this is opnly to reorder. It should always happen
+          [overContainer]: arrayMove(
+            boardSection[overContainer],
+            activeIndex,
+            overIndex
+          ),
         })
       });
     }

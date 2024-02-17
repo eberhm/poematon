@@ -1,45 +1,37 @@
 import { Task } from '../types';
-import { v4 as uuidv4 } from 'uuid';
 
 export const INITIAL_TASKS: Task[] = [
   {
-    id: uuidv4(),
+    id: 3001,
     title: 'Verso 1',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },
   {
-    id: uuidv4(),
+    id: 3002,
     title: 'Verso Carlos',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },
   {
-    id: uuidv4(),
+    id: 3003,
     title: 'Verso 2',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },  
   {
-    id: uuidv4(),
+    id: 3004,
     title: 'Verso 3',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },  
   {
-    id: uuidv4(),
+    id: 3005,
     title: 'Verso 4',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },   {
-    id: uuidv4(),
+    id: 3006,
     title: 'Verso 5',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },   {
-    id: uuidv4(),
+    id: 3007,
     title: 'Verso 6',
-    description: 'Pablo Neruda',
-    status: 'Versos',
+    description: 'Pablo Neruda'
   }, 
 ];
