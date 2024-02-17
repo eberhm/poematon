@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/><link rel="stylesheet" href="main.css">
-    <script src="tiempo.js"></script> 
-    <script src="imprimir.js"></script> 
     <title>Poematón / v1</title>
   </head>
   <body>
     <noscript>Para que puedas disfrutar de una otal experiencia, es necesario tener activo JavaScript en tu navegador.</noscript>
-    <div id="tiempo"></div><div onclick="printDiv('Poema')" class="imprimir">Imprime tu poema</div>
+   <div id="inicial">
+      <h1>Poematón / v1</h1>
+      <div class="instrucciones">
+        <h2>Instrucciones</h2>
+        <ol class="pasos">
+        <li><strong class="colorlist">1.</strong> Encontrarás un listado de versos mayoritariamente con métrica impar (pentasílabos, heptasílabos, eneasílabos, endecasílabos). Elige un verso y arrástralo hacia el cuadro del lado derecho. </li>
+       <li><strong class="colorlist">2.</strong>  Repite versos si quieres, dará musicalidad a tu poema ready-made.</li>
+       <li><strong class="colorlist">3.</strong>  No es necesario que busques rimas entre los versos; hoy en día predomina el verso blanco: versos sin rima, pero con ritmo (medida y acentos).</li>
+       <li><strong class="colorlist">4.</strong> Dispones de 5 minutos para hacer tus elecciones y una extensión máxima de 12 versos.</li>
+      <li><strong class="colorlist">5.</strong>  Presiona el botón de imprimir y recoge el poema que has creado al salir del <strong>POEMATÓN.</strong></li>
+        </ol>
+        ¿Lo tienes claro? Pues presiona el botón inferior de <strong>EMPEZAR</strong>
+      </div>
+      <div id="empezar">EMPEZAR</div>
+   </div>
+    <div id="tiempo"></div><div onclick="printDiv('Poema')" id="imprimir">Imprime tu poema</div>
     <div id="root"></div>
     <div id="final">
       <div class="enhorabuena">¡Enhorabuena, tu poema se está imprimiendo!</div>
        <div class="gracias">Gracias por participar.</div>
     </div>
+    <script src="tiempo.js"></script>  
+    <script src="imprimir.js"></script> 
   </body>
 </html>
