@@ -6,40 +6,33 @@ export const INITIAL_TASKS: Task[] = [
     id: uuidv4(),
     title: 'Verso 1',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },
   {
     id: uuidv4(),
     title: 'Verso Carlos',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },
   {
     id: uuidv4(),
     title: 'Verso 2',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },  
   {
     id: uuidv4(),
     title: 'Verso 3',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },  
   {
     id: uuidv4(),
     title: 'Verso 4',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },   {
     id: uuidv4(),
     title: 'Verso 5',
     description: 'Pablo Neruda',
-    status: 'Versos',
   },   {
     id: uuidv4(),
     title: 'Verso 6',
     description: 'Pablo Neruda',
-    status: 'Versos',
   }, 
 ];

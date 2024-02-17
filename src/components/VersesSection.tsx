@@ -1,50 +1,36 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import { useDroppable } from '@dnd-kit/core';
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
 import Typography from '@mui/material/Typography';
 import { Task } from '../types';
 import TaskItem from './TaskItem';
-import SortableTaskItem from './SortableTaskItem';
+import DraggableTaskItem from './DraggableTaskItem';
 
-type BoardSectionProps = {
-  id: string;
-  title: string;
+type VersesSectionProps = {
   tasks: Task[];
 };
-const var1= 1;
 
-const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
+const VersesSection = ({ tasks }: VersesSectionProps) => {
   const { setNodeRef } = useDroppable({
-    id,
+    id: "Versos",
   });
 
   return (
     <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }}>
       <Typography variant="h6" sx={{ mb: 3 }}>
-        {title}
+        Versos
       </Typography>
-      <SortableContext
-        id={id}
-        items={tasks}
-        strategy={verticalListSortingStrategy}
-      >
-        <div id={id} ref={setNodeRef}>
+        <div id={"Versos"} ref={setNodeRef}>
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 3}}>
-              <SortableTaskItem id={task.id}>
-
+              <DraggableTaskItem id={task.id}>
                 <TaskItem task={task} />
-              </SortableTaskItem>
+              </DraggableTaskItem>
             </Box>
           ))}
         </div>
-      </SortableContext>
     </Box>
   );
 };
 
-export default BoardSection;
+export default VersesSection;

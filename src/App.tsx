@@ -1,8 +1,9 @@
 import React from 'react';
-import BoardSectionList from './components/BoardSectionList';
+import PoematonSectionList from './components/PoematonSectionList';
 
 function App() {
-  return <BoardSectionList />;
+  return <><PoematonSectionList />
+  </>;
 }
 
 export default App;
