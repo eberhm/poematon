@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const INITIAL_TASKS: Task[] = [
   {
     id: uuidv4(),
-    title: 'Verso 1',
+    title: 'Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum ',
     description: 'Pablo Neruda',
   },
   {

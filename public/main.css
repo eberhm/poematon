@@ -7,10 +7,16 @@
         background: #111!important;
         color: #999;
     }
-h1{
-    font-size: 50px;
-    margin-top: -10px;
-}
+
+    h1{
+        font-size: 50px;
+        margin-top: -10px;
+    }
+
+    .text-logo{
+    margin-top: -40px;
+    }
+
     #inicial{
         padding-top: 100px;
         width: 100%;
@@ -29,7 +35,7 @@ h1{
     .instrucciones ol li {
         list-style: none;
         text-align: center;
-        width:  1000px;
+        max-width:  1000px;
         margin: auto;
         font-size: 20px;
 }
@@ -45,6 +51,16 @@ strong.colorlist{
     opacity: 0;
     transition: 0.5s all linear;
   }
+
+.empezar{
+    font-size: 24px;
+    margin-top: 10px;
+    color: #cfc140;
+}
+
+.empezar strong{
+    color: #fff;
+}
 
 #empezar{
     padding: 10px 20px;
@@ -113,11 +129,6 @@ strong.colorlist{
         font-size: 6em;
         margin:auto;
     }
-
-    .MuiBox-root .css-5or4i1{
-        background: red !important
-    }
-
 
     .css-5or4i1{
         background: #333 !important;
