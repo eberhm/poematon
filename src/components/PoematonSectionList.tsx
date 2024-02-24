@@ -64,12 +64,7 @@ const PoematonSectionList = () => {
     }
 
     setBoardSections((boardSection) => {
-      console.log('boardSection', boardSection)
-      
-      
-
-      
-      
+            
       const getActiveContainerElements = () => {
         return [
           ...boardSection[activeContainer].filter(
@@ -122,7 +117,7 @@ const PoematonSectionList = () => {
       boardSections,
       over?.id as TaskId
     );
-    console.log(active.id )
+
     if (
       !activeContainer ||
       !overContainer ||
@@ -178,7 +173,7 @@ const PoematonSectionList = () => {
         <Grid container spacing={4}>
             <Grid item xs={6} key="Versos">
               <VersesSection
-                tasks={calculateVersosSectionByPoem(boardSections.Poema)}
+                tasks={boardSections.Versos}
               />
             </Grid>
             <Grid item xs={6} key="Versos">
