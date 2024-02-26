@@ -82,13 +82,13 @@ strong.colorlist{
         width: 100%;
         height: 100%;
         display: none;
-        opacity: .9;
         z-index: 10;
         position: absolute;
         margin: auto;
         color: #fff;
         text-align: center;
         padding-top: 300px;
+        background-image: url("background.portada.png");
     }
 
     #final .enhorabuena{
@@ -163,4 +163,23 @@ strong.colorlist{
     border-radius: 14px !important;
     background: #fff;
     }
+
+    .MuiCardContent-root span{
+        display: none;
+    }
+
+    @media print {
+        .MuiCardContent-root span{
+            display: block;
+        }
+
+        .css-5or4i1{
+            width: 100% !important;
+            scrollbar-color:none; 
+        }
+
+        .css-1osj8n2-MuiGrid-root:nth-child(1) .css-5or4i1{ 
+            display: none;
+        }
+    }   
  

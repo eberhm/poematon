@@ -5,6 +5,7 @@ export type Task = {
   sourceId?: TaskId
   title: string;
   description: string;
+  author: string;
 };
 
 export type BoardSections = {
