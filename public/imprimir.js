@@ -1,7 +1,7 @@
 function printDiv(div) {
     var contenido= document.getElementById(div).innerHTML;
     document.body.innerHTML = contenido;
-    var x = document.getElementById("final");
+    document.getElementById("final").style.display = "block"
     window.print();
 
     setTimeout(() => {

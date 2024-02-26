@@ -4,7 +4,7 @@
         flex-direction: column;
        /* height:100vh;*/
         margin: 0;
-        background: #111!important;
+        background-image: url("background.portada.png");
         color: #999;
     }
 
@@ -82,9 +82,8 @@ strong.colorlist{
         width: 100%;
         height: 100%;
         display: none;
-        background-image: url("background.portada.png");
         opacity: .9;
-        z-index: 1;
+        z-index: 10;
         position: absolute;
         margin: auto;
         color: #fff;
@@ -135,8 +134,19 @@ strong.colorlist{
         height: 65vh;
         overflow-y: scroll;
         position: relative !important;
-        scrollbar-color: #fff #333;
-        
+        scrollbar-color: #fff #333; 
+        border-radius: 20px;
+        transition: 0.5s all linear;
+    }
+
+    .css-1osj8n2-MuiGrid-root:nth-child(1) .css-5or4i1{ background: #000 !important; }
+    .css-1osj8n2-MuiGrid-root:nth-child(2) .css-5or4i1{ background: #cfc140 !important; }
+
+
+    .css-1osj8n2-MuiGrid-root:nth-child(2) .css-5or4i1:hover{
+        transition: 0.5s all linear;
+        background-color: #000 !important;
+
     }
 
 

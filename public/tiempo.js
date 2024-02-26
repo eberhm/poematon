@@ -2,7 +2,7 @@ var seconds = 300; //número de segundos a contar
 const audio = new Audio("sound/10s.mp3");
 var countdownTimer;
 
-document.oncontextmenu = function(){return false}
+//document.oncontextmenu = function(){return false}
 
 const boton = document.getElementById("empezar");
 const div = document.getElementById("inicial");
