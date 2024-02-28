@@ -10,7 +10,7 @@
 
     h1{
         font-size: 80px;
-        margin-top: -20px;
+        margin-top: -40px;
     }
 
     .text-logo{
@@ -19,7 +19,7 @@
     }
 
     #inicial{
-        padding-top: 100px;
+        padding-top: 50px;
         width: 100%;
         height: 100%; 
         z-index: 3;
