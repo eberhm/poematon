@@ -30,13 +30,13 @@
 
     }
     #inicial img{
-        width: 15px;
+        width: 25px;
     }
 
     .instrucciones ol li {
         list-style: none;
         text-align: center;
-        max-width:  1000px;
+        max-width:  90%;
         margin: auto;
         font-size: 20px;
         margin-top: 20px;
@@ -77,7 +77,7 @@ strong.colorlist{
     cursor: pointer;
     margin: auto;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
     #empezar:hover {
        background-color: #fff;
@@ -114,7 +114,7 @@ strong.colorlist{
         cursor: pointer;
         margin: auto;
         text-align: center;
-        margin-top: -10px;
+        margin-top: -0px;
         z-index: 2;
     }
     
@@ -129,13 +129,13 @@ strong.colorlist{
 
     #tiempo{
         color: #fff;
-        font-size: 6em;
+        font-size: 4em;
         margin:auto;
     }
 
     .css-5or4i1{
         background: #333 !important;
-        height: 65vh;
+        height: 75vh;
         overflow-y: scroll;
         position: relative !important;
         scrollbar-color: #fff #333; 
@@ -164,6 +164,7 @@ strong.colorlist{
 
     .css-46bh2p-MuiCardContent-root{
     border-radius: 14px !important;
+    padding: 5px 10px 5px 10px!important;
     background: #fff;
     }
 
@@ -175,14 +176,13 @@ strong.colorlist{
         .MuiCardContent-root span{
             display: block;
         }
- /*
-        .css-5or4i1{
+        .poema_seccion{
             width: 100% !important;
             scrollbar-color:none; 
         }
 
-        .css-1osj8n2-MuiGrid-root:nth-child(1) .css-5or4i1{ 
+        .versos_seccion { 
             display: none;
-        }*/
+        }
     }   
  
