@@ -16,7 +16,7 @@ const VersesSection = ({ tasks }: VersesSectionProps) => {
   });
 
   return (
-    <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }}>
+    <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }} className="versos_seccion">
       <Typography variant="h6" sx={{ mb: 3 }}>
         Versos
       </Typography>

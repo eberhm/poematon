@@ -20,7 +20,7 @@ const PoemSection = ({ tasks }: PoemSectionProps) => {
   });
 
   return (
-    <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }}>
+    <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }} className="poema_seccion">
       <Typography variant="h6" sx={{ mb: 3 }}>
        Poema
       </Typography>

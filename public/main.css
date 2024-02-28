@@ -139,11 +139,11 @@ strong.colorlist{
         transition: 0.5s all linear;
     }
 
-    .css-1osj8n2-MuiGrid-root:nth-child(1) .css-5or4i1{ background: #000 !important; }
-    .css-1osj8n2-MuiGrid-root:nth-child(2) .css-5or4i1{ background: #cfc140 !important; }
+    .versos_seccion { background: #000 !important; }
+    .poema_seccion { background: #cfc140 !important; }
 
 
-    .css-1osj8n2-MuiGrid-root:nth-child(2) .css-5or4i1:hover{
+    .poema_seccion:hover{
         transition: 0.5s all linear;
         background-color: #000 !important;
 
@@ -168,11 +168,11 @@ strong.colorlist{
         display: none;
     }
 
-    @media print {
+   @media print {
         .MuiCardContent-root span{
             display: block;
         }
-
+ /*
         .css-5or4i1{
             width: 100% !important;
             scrollbar-color:none; 
@@ -180,6 +180,6 @@ strong.colorlist{
 
         .css-1osj8n2-MuiGrid-root:nth-child(1) .css-5or4i1{ 
             display: none;
-        }
+        }*/
     }   
  
