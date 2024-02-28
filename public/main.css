@@ -9,12 +9,13 @@
     }
 
     h1{
-        font-size: 50px;
-        margin-top: -10px;
+        font-size: 80px;
+        margin-top: -20px;
     }
 
     .text-logo{
-    margin-top: -40px;
+    margin-top: -76px;
+    font-size: 30px;
     }
 
     #inicial{
@@ -38,13 +39,16 @@
         max-width:  1000px;
         margin: auto;
         font-size: 20px;
+        margin-top: 20px;
 }
+
 strong.colorlist{
     color:#cfc140;
 }
 
 .instrucciones h2{
     color:#cfc140;
+    font-size: 30px;
 }
 
 .ocultar {
