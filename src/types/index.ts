@@ -2,10 +2,9 @@
 export type TaskId = string
 export type Task = {
   id: TaskId;
-  sourceId?: TaskId
-  title: string;
-  description: string;
-  author: string;
+  verso: string
+  autor: string;
+  poemario: string;
 };
 
 export type BoardSections = {
