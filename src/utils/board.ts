@@ -13,6 +13,9 @@ const arrayShuffle = (arr: Array<any>) => arr
   .sort((a, b) => a.sort - b.sort)
   .map(({ value }) => value)
 
+console.log(arrayShuffle)
+
+
 export const findBoardSectionContainer = (
   boardSections: BoardSections,
   id: TaskId
