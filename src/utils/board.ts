@@ -3,7 +3,7 @@ import { INITIAL_TASKS } from '../data';
 
 export const initializeBoard = (): BoardSections => {
   return {
-    Versos: arrayShuffle(INITIAL_TASKS),
+    Versos: INITIAL_TASKS,
     Poema: []
   }
 };
