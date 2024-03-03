@@ -12,7 +12,6 @@ import {
   DragStartEvent,
   DragOverEvent,
   DragOverlay,
-  DropAnimation,
   defaultDropAnimation,
 } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates, arrayMove } from '@dnd-kit/sortable';
