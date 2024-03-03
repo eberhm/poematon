@@ -183,12 +183,23 @@ const PoematonSectionList = () => {
           </DragOverlay>
         </DndContext>
         </Grid>
+        <div>
+        <div className='poema_impreso'>
+          <span>Poema</span>
+          <ul>
+          { boardSections.Poema.map((autor) => {
+              return <li>{autor.verso}</li>
+            }) }
+          </ul>
+        </div>
         <div className='autores'>
+          <span>Autores</span>
           <ul>
           { getAuthors(boardSections.Poema).map((autor) => {
               return <li>{autor}</li>
             }) }
           </ul>
+        </div>
         </div>
     </Container>
   );
