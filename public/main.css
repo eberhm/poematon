@@ -172,10 +172,18 @@ strong.colorlist{
         display: none;
     }
 
+    .autores {
+        display: none;
+    }
+
    @media print {
 
         #tiempo, #imprimir, .css-1osj8n2-MuiGrid-root:nth-child(1){
             display: none;
+        }
+
+        .autores {
+            display: block;
         }
 
         .MuiCardContent-root{

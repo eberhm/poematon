@@ -183,6 +183,13 @@ const PoematonSectionList = () => {
           </DragOverlay>
         </DndContext>
         </Grid>
+        <div className='autores'>
+          <ul>
+          { getAuthors(boardSections.Poema).map((autor) => {
+              return <li>{autor}</li>
+            }) }
+          </ul>
+        </div>
     </Container>
   );
 };
@@ -196,6 +203,12 @@ const calculateVersosSectionByPoem = (poema: Task[]) => {
       id
     }
   })
+}
+
+const getAuthors = (verses: Task[]) => {
+  const authors = Array.from(new Set(verses.map(verse => verse.autor)))
+  console.log(authors)
+ return authors
 }
 
 export default PoematonSectionList;
