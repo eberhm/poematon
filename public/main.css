@@ -162,10 +162,10 @@ strong.colorlist{
         background-color: transparent !important;
     }
 
-    .css-46bh2p-MuiCardContent-root{
+    .elemento{
     border-radius: 14px !important;
     padding: 5px 10px 5px 10px!important;
-    background: #fff;
+    background: #fff !important;
     }
 
     .MuiCardContent-root span{
