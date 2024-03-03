@@ -3,7 +3,7 @@ const fs = require('fs')
 const { v4 } = require('uuid')
 
 
-
+const uuid = () => v4()
   
 const versos = parse(fs.readFileSync('./src/data/data.csv'), {
   delimiter: ';',
@@ -11,7 +11,7 @@ const versos = parse(fs.readFileSync('./src/data/data.csv'), {
 })
 
 const finalVersos = versos.map(verso => {
-    return {id: v4(), ...verso}
+    return {id: uuid(), ...verso}
 })
 console.log(finalVersos)
 

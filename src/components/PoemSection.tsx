@@ -7,8 +7,8 @@ import {
 } from '@dnd-kit/sortable';
 import Typography from '@mui/material/Typography';
 import { Task } from '../types';
+import PoemItem from './PoemItem';
 import TaskItem from './TaskItem';
-import SortableTaskItem from './SortableTaskItem';
 
 type PoemSectionProps = {
   tasks: Task[];
@@ -20,21 +20,20 @@ const PoemSection = ({ tasks }: PoemSectionProps) => {
   });
 
   return (
-    <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }} className="poema_seccion">
+    <Box sx={{ color: '#fff', backgroundColor: '#eee', padding: 2 }} className="poema_seccion" id={"Poema"} ref={setNodeRef}>
       <Typography variant="h6" sx={{ mb: 3 }}>
        Poema
       </Typography>
       <SortableContext
-        id={"Poema"}
         items={tasks}
         strategy={verticalListSortingStrategy}
       >
-        <div id={"Poema"} ref={setNodeRef}>
+        <div>
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 3}}>
-              <SortableTaskItem id={task.id}>
+              <PoemItem id={task.id}>
                 <TaskItem task={task} />
-              </SortableTaskItem>
+              </PoemItem>
             </Box>
           ))}
         </div>

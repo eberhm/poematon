@@ -25,10 +25,10 @@ import VersesSection from './VersesSection';
 import PoemSection from './PoemSection';
 
 const initialBoardSections = initializeBoard();
+const availableVerses = INITIAL_TASKS;
 
 const PoematonSectionList = () => {
-  const availableVerses = INITIAL_TASKS;
-  
+
   const [boardSections, setBoardSections] =
     useState<BoardSectionsType>(initialBoardSections);
 
@@ -42,7 +42,7 @@ const PoematonSectionList = () => {
   );
 
   const handleDragStart = ({ active }: DragStartEvent) => {
-    setActiveTaskId(active.id as TaskId);
+    setActiveTaskId(() => { return active.id as TaskId });
   };
 
   const handleDragOver = ({ active, over }: DragOverEvent) => {
@@ -155,37 +155,35 @@ const PoematonSectionList = () => {
     setActiveTaskId(null);
   };
 
-  const dropAnimation: DropAnimation = {
-    ...defaultDropAnimation,
-  };
-
   const task = activeTaskId ? getVerseById(availableVerses, activeTaskId) : null;
 
   return (
     <Container>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCorners}
-        onDragStart={handleDragStart}
-        onDragOver={handleDragOver}
-        onDragEnd={handleDragEnd}
-      >
         <Grid container spacing={4}>
-            <Grid item xs={6} key="Versos">
-              <VersesSection
-                tasks={boardSections.Versos}
-              />
-            </Grid>
-            <Grid item xs={6} key="Versos">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCorners}
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+        >
+          <Grid item xs={6} key="Versos">
+            <VersesSection
+              tasks={boardSections.Versos}
+            />
+          </Grid>
+
+          <Grid item xs={6} key="Poema">
             <PoemSection
               tasks={boardSections["Poema"]}
             />
           </Grid>
-          <DragOverlay dropAnimation={dropAnimation}>
+
+          <DragOverlay dropAnimation={{ ...defaultDropAnimation }}>
             {task ? <TaskItem task={task} /> : null}
           </DragOverlay>
+        </DndContext>
         </Grid>
-      </DndContext>
     </Container>
   );
 };
