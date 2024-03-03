@@ -173,16 +173,42 @@ strong.colorlist{
     }
 
    @media print {
-        .MuiCardContent-root span{
-            display: block;
-        }
-        .poema_seccion{
-            width: 100% !important;
-            scrollbar-color:none; 
-        }
 
-        .versos_seccion { 
+        #tiempo, #imprimir, .css-1osj8n2-MuiGrid-root:nth-child(1){
             display: none;
         }
+
+        .MuiCardContent-root{
+            border-radius: 0px !important;
+            outline:none;
+            margin-top: -4px;
+        }
+
+        .css-bhp9pd-MuiPaper-root-MuiCard-root {
+            background-color: #fff;
+            border-radius: 0px;
+        }
+        
+       h6{
+            color:#000;
+            font-size: 40px !important; 
+            margin-bottom: 40px;
+        }
+        
+        .poema_seccion{
+            width: 700px !important;
+            margin: auto; 
+            overflow: hidden;
+        }
+
+        .poema_seccion span{
+          float: right;
+          display:block
+        }   
+
+        .versos_seccion { 
+         
+            display: none;
+            scrollbar-color: none !important; 
+        }
     }   
- 

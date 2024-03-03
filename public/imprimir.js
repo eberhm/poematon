@@ -1,4 +1,5 @@
 function printDiv(div) {
+  audio.pause();
 
   //document.getElementById("final").style.display = "block";
     /*var contenido= document.getElementById(div).innerHTML;
