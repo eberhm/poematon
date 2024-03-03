@@ -1,26 +1,24 @@
 import React from 'react';
-import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { TaskId } from '../types';
+import { useDraggable } from '@dnd-kit/core';
 
-type SortableTaskItemProps = {
+type VerseItemProps = {
   children: React.ReactNode;
   id: TaskId;
 };
 
-const SortableTaskItem = ({ children, id }: SortableTaskItemProps) => {
+const VerseItem = ({ children, id }: VerseItemProps) => {
   const {
     attributes,
     listeners,
     setNodeRef,
     transform,
-    transition,
     isDragging,
-  } = useSortable({ id });
+  } = useDraggable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
     opacity: isDragging ? 0 : 1,
   };
 
@@ -31,4 +29,4 @@ const SortableTaskItem = ({ children, id }: SortableTaskItemProps) => {
   );
 };
 
-export default SortableTaskItem;
+export default VerseItem;

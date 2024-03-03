@@ -1,24 +1,26 @@
 import React from 'react';
+import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { TaskId } from '../types';
-import { useDraggable } from '@dnd-kit/core';
 
-type SortableTaskItemProps = {
+type PoemItemProps = {
   children: React.ReactNode;
   id: TaskId;
 };
 
-const DraggableTaskItem = ({ children, id }: SortableTaskItemProps) => {
+const PoemItem = ({ children, id }: PoemItemProps) => {
   const {
     attributes,
     listeners,
     setNodeRef,
     transform,
+    transition,
     isDragging,
-  } = useDraggable({ id });
+  } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
+    transition,
     opacity: isDragging ? 0 : 1,
   };
 
@@ -29,4 +31,4 @@ const DraggableTaskItem = ({ children, id }: SortableTaskItemProps) => {
   );
 };
 
-export default DraggableTaskItem;
+export default PoemItem;
