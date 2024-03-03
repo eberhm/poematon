@@ -8,7 +8,7 @@ type TaskItemProps = {
 const TaskItem = ({ task }: TaskItemProps) => {
   return (
     <Card>
-      <CardContent><span>{task.autor}</span>{task.verso}</CardContent>
+      <CardContent className='elemento'><span>{task.autor}</span>{task.verso}</CardContent>
     </Card>
   );
 };

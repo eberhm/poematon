@@ -69,7 +69,7 @@ strong.colorlist{
 #empezar{
     padding: 10px 20px;
     width: 190px;
-    background-color: red;
+    background-color: #cfc140;
     color: #000;
     font-weight: bold;
     border: none;
@@ -162,10 +162,10 @@ strong.colorlist{
         background-color: transparent !important;
     }
 
-    .css-46bh2p-MuiCardContent-root{
+    .elemento{
     border-radius: 14px !important;
     padding: 5px 10px 5px 10px!important;
-    background: #fff;
+    background: #fff !important;
     }
 
     .MuiCardContent-root span{
@@ -178,14 +178,14 @@ strong.colorlist{
 
    @media print {
 
-        #tiempo, #imprimir, .css-1osj8n2-MuiGrid-root:nth-child(1){
+    .apptodo{
             display: none;
         }
 
-        .autores {
+        .autores, .poema_impreso {
             display: block;
         }
-
+        /*
         .MuiCardContent-root{
             border-radius: 0px !important;
             outline:none;
@@ -218,5 +218,5 @@ strong.colorlist{
          
             display: none;
             scrollbar-color: none !important; 
-        }
+        }*/
     }   
