@@ -3,7 +3,7 @@ import { INITIAL_TASKS } from '../data';
 
 export const initializeBoard = (): BoardSections => {
   return {
-    Versos: INITIAL_TASKS,
+    Versos: arrayShuffle(INITIAL_TASKS),
     Poema: []
   }
 };
@@ -12,8 +12,6 @@ const arrayShuffle = (arr: Array<any>) => arr
   .map(value => ({ value, sort: Math.random() }))
   .sort((a, b) => a.sort - b.sort)
   .map(({ value }) => value)
-
-console.log(arrayShuffle)
 
 
 export const findBoardSectionContainer = (
