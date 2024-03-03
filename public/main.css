@@ -177,11 +177,31 @@ strong.colorlist{
     }
 
    @media print {
-        .app_screen {
+        .app_screen, #imprimir, #tiempo {
             display: none !important;
+        }
+
+        .poema_impreso, .autores{
+            margin-left: 100px;
+        }
+
+        .poema_impreso span{
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .poema_impreso ul li{
+            list-style: none;
+        }
+
+        .autores span{
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
         }
 
         .print_version {
             display: block;
+
         }
     }   
