@@ -157,7 +157,8 @@ const PoematonSectionList = () => {
   const task = activeTaskId ? getVerseById(availableVerses, activeTaskId) : null;
 
   return (
-    <Container>
+    <>
+    <Container className='app_screen'>
         <Grid container spacing={4}>
         <DndContext
           sensors={sensors}
@@ -183,7 +184,8 @@ const PoematonSectionList = () => {
           </DragOverlay>
         </DndContext>
         </Grid>
-        <div>
+    </Container>
+    <div className='print_version'>
         <div className='poema_impreso'>
           <span>Poema</span>
           <ul>
@@ -200,8 +202,8 @@ const PoematonSectionList = () => {
             }) }
           </ul>
         </div>
-        </div>
-    </Container>
+      </div>
+    </>
   );
 };
 

@@ -172,51 +172,16 @@ strong.colorlist{
         display: none;
     }
 
-    .autores {
+    .print_version {
         display: none;
     }
 
    @media print {
-
-        #tiempo, #imprimir, .css-1osj8n2-MuiGrid-root:nth-child(1){
-            display: none;
+        .app_screen {
+            display: none !important;
         }
 
-        .autores {
+        .print_version {
             display: block;
-        }
-
-        .MuiCardContent-root{
-            border-radius: 0px !important;
-            outline:none;
-            margin-top: -4px;
-        }
-
-        .css-bhp9pd-MuiPaper-root-MuiCard-root {
-            background-color: #fff;
-            border-radius: 0px;
-        }
-        
-       h6{
-            color:#000;
-            font-size: 40px !important; 
-            margin-bottom: 40px;
-        }
-        
-        .poema_seccion{
-            width: 700px !important;
-            margin: auto; 
-            overflow: hidden;
-        }
-
-        .poema_seccion span{
-          float: right;
-          display:block
-        }   
-
-        .versos_seccion { 
-         
-            display: none;
-            scrollbar-color: none !important; 
         }
     }   
