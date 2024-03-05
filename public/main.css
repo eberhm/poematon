@@ -68,7 +68,7 @@ strong.colorlist{
 
 #empezar{
     padding: 10px 20px;
-    width: 190px;
+    width: 290px;
     background-color: #cfc140;
     color: #000;
     font-weight: bold;
@@ -78,6 +78,7 @@ strong.colorlist{
     margin: auto;
     text-align: center;
     margin-top: 20px;
+    font-size: 30px;
 }
     #empezar:hover {
        background-color: #fff;
@@ -176,27 +177,35 @@ strong.colorlist{
         display: none;
     }
 
+
    @media print {
+
+
+
         .app_screen, #imprimir, #tiempo {
             display: none !important;
         }
 
         .poema_impreso, .autores{
-            margin-left: 100px;
+            margin: 100px;
         }
 
         .poema_impreso span{
-            font-size: 2em;
+            font-size: 1.7em;
             font-weight: bold;
         }
 
         .poema_impreso ul li{
             list-style: none;
+            font-size: 1.3em;
+        }
+
+        .autores{
+            margin-top: 100px;
         }
 
         .autores span{
-            margin-top: 30px;
-            font-size: 1.2em;
+            font-size: 1.4em;
             font-weight: bold;
         }
 

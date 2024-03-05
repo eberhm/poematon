@@ -4,6 +4,7 @@ export type Task = {
   id: TaskId;
   verso: string
   autor: string;
+  poema: string;
   poemario: string;
 };
 

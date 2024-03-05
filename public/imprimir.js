@@ -1,9 +1,9 @@
 function printDiv(div) {
   audio.pause();
-
   //document.getElementById("final").style.display = "block";
     /*var contenido= document.getElementById(div).innerHTML;
     document.body.innerHTML = contenido;*/
+    document.documentElement.requestFullscreen();
     window.print();
     document.getElementById("final").style.display = "block";
 

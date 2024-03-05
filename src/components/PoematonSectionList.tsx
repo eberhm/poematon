@@ -187,7 +187,7 @@ const PoematonSectionList = () => {
     </Container>
     <div className='print_version'>
         <div className='poema_impreso'>
-          <span>Poema</span>
+          <span>POEMATÓN. Tu Poema ready-made:</span>
           <ul>
           { boardSections.Poema.map((autor) => {
               return <li>{autor.verso}</li>
@@ -195,11 +195,15 @@ const PoematonSectionList = () => {
           </ul>
         </div>
         <div className='autores'>
-          <span>Autores</span>
+          <span>Poema confeccionado con los versos de los autores:</span>
           <ul>
-          { getAuthors(boardSections.Poema).map((autor) => {
-              return <li>{autor}</li>
+          { boardSections.Poema.map((verso) => {
+              const metaData=[verso.autor]
+              verso.poema && metaData.push(verso.poema)
+              verso.poemario && metaData.push(verso.poemario)
+              return <li>{metaData.join(", ")}</li>
             }) }
+
           </ul>
         </div>
       </div>
@@ -222,6 +226,13 @@ const getAuthors = (verses: Task[]) => {
   const authors = Array.from(new Set(verses.map(verse => verse.autor)))
   console.log(authors)
  return authors
+}
+
+const getPoema = (verses: Task[]) => {
+  var authors = Array.from(new Set(verses.map(verse => verse.autor)))
+  var poemario = Array.from(new Set(verses.map(verse1 => verse1.poemario)))
+  
+ return  [authors, poemario]
 }
 
 export default PoematonSectionList;
