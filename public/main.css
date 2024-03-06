@@ -18,6 +18,36 @@
     font-size: 30px;
     }
 
+.popup_ini{
+    background: #000;
+    opacity: .8;
+    align-self: center;
+    width: 100%;
+    height: 100%; 
+    
+    z-index: 200;  
+}
+
+.mensaje_ini{
+    position: absolute;
+    z-index: 300;  
+    display: flex;
+    font-size: 1.5em;
+    padding: 0px 30px 0px 30px;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border: 2px dashed #333;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    width: 400px;
+    height: 100px;
+    margin-top: 300px;
+    z-index: 1000;  
+    border-radius: 20px;
+}
+
     #inicial{
         padding-top: 50px;
         width: 100%;
