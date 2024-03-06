@@ -6,8 +6,6 @@ https://eberhm.github.io/poematon/
 
 Cool explicacion de la propuesta
 
-
-
 ### Local dev
 
 Instala el proyecto

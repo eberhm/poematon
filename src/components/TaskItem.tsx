@@ -1,5 +1,5 @@
-import { Card, CardContent } from '@mui/material';
-import { Task } from '../types';
+import { Card, CardContent } from "@mui/material";
+import { Task } from "../types";
 
 type TaskItemProps = {
   task: Task;
@@ -8,7 +8,10 @@ type TaskItemProps = {
 const TaskItem = ({ task }: TaskItemProps) => {
   return (
     <Card>
-      <CardContent className='elemento'><span>{task.autor}</span>{task.verso}</CardContent>
+      <CardContent className="elemento">
+        <span>{task.autor}</span>
+        {task.verso}
+      </CardContent>
     </Card>
   );
 };

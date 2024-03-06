@@ -1,8 +1,7 @@
-
-export type TaskId = string
+export type TaskId = string;
 export type Task = {
   id: TaskId;
-  verso: string
+  verso: string;
   autor: string;
   poema: string;
   poemario: string;
