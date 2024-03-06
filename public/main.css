@@ -1,216 +1,213 @@
-
-    html, body{
-        display: flex;
-        flex-direction: column;
-       /* height:100vh;*/
-        margin: 0;
-        background-image: url("background.portada.png");
-        color: #999;
-    }
-
-    h1{
-        font-size: 80px;
-        margin-top: -40px;
-    }
-
-    .text-logo{
-    margin-top: -76px;
-    font-size: 30px;
-    }
-
-    #inicial{
-        padding-top: 50px;
-        width: 100%;
-        height: 100%; 
-        z-index: 3;
-        position: absolute;
-        color: #fff;
-        text-align: center;
-        background-image: url("background.portada.png");
-
-    }
-    #inicial img{
-        width: 25px;
-    }
-
-    .instrucciones ol li {
-        list-style: none;
-        text-align: center;
-        max-width:  90%;
-        margin: auto;
-        font-size: 20px;
-        margin-top: 20px;
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  /* height:100vh;*/
+  margin: 0;
+  background-image: url("background.portada.png");
+  color: #999;
 }
 
-strong.colorlist{
-    color:#cfc140;
+h1 {
+  font-size: 80px;
+  margin-top: -40px;
 }
 
-.instrucciones h2{
-    color:#cfc140;
-    font-size: 30px;
+.text-logo {
+  margin-top: -76px;
+  font-size: 30px;
+}
+
+#inicial {
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  background-image: url("background.portada.png");
+}
+#inicial img {
+  width: 25px;
+}
+
+.instrucciones ol li {
+  list-style: none;
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+strong.colorlist {
+  color: #cfc140;
+}
+
+.instrucciones h2 {
+  color: #cfc140;
+  font-size: 30px;
 }
 
 .ocultar {
-    opacity: 0;
-    transition: 0.5s all linear;
+  opacity: 0;
+  transition: 0.5s all linear;
+}
+
+.empezar {
+  font-size: 24px;
+  margin-top: 10px;
+  color: #cfc140;
+}
+
+.empezar strong {
+  color: #fff;
+}
+
+#empezar {
+  padding: 10px 20px;
+  width: 290px;
+  background-color: #cfc140;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 30px;
+}
+#empezar:hover {
+  background-color: #fff;
+}
+#final {
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 10;
+  position: absolute;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+  padding-top: 300px;
+  background-image: url("background.portada.png");
+}
+
+#final .enhorabuena {
+  font-size: 3em;
+}
+
+#final .gracias {
+  font-size: 2em;
+}
+
+#imprimir {
+  padding: 10px 20px;
+  width: 190px;
+  background-color: #cfc140;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: auto;
+  text-align: center;
+  margin-top: -0px;
+  z-index: 2;
+}
+
+#imprimir:hover {
+  background-color: #fff;
+}
+
+#imprimir:active {
+  background-color: tima;
+}
+
+#tiempo {
+  color: #fff;
+  font-size: 4em;
+  margin: auto;
+}
+
+.css-5or4i1 {
+  background: #333 !important;
+  height: 75vh;
+  overflow-y: scroll;
+  position: relative !important;
+  scrollbar-color: #fff #333;
+  border-radius: 20px;
+  transition: 0.5s all linear;
+}
+
+.versos_seccion {
+  background: #000 !important;
+}
+.poema_seccion {
+  background: #cfc140 !important;
+}
+
+.poema_seccion:hover {
+  transition: 0.5s all linear;
+  background-color: #000 !important;
+}
+
+#root {
+  margin-top: 50px !important;
+}
+
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  background-color: transparent !important;
+}
+
+.elemento {
+  border-radius: 14px !important;
+  padding: 5px 10px 5px 10px !important;
+  background: #fff !important;
+}
+
+.MuiCardContent-root span {
+  display: none;
+}
+
+.print_version {
+  display: none;
+}
+
+@media print {
+  .app_screen,
+  #imprimir,
+  #tiempo {
+    display: none !important;
   }
 
-.empezar{
-    font-size: 24px;
-    margin-top: 10px;
-    color: #cfc140;
-}
+  .poema_impreso,
+  .autores {
+    margin: 100px;
+  }
 
-.empezar strong{
-    color: #fff;
-}
-
-#empezar{
-    padding: 10px 20px;
-    width: 290px;
-    background-color: #cfc140;
-    color: #000;
+  .poema_impreso span {
+    font-size: 1.7em;
     font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: auto;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 30px;
+  }
+
+  .poema_impreso ul li {
+    list-style: none;
+    font-size: 1.3em;
+  }
+
+  .autores {
+    margin-top: 100px;
+  }
+
+  .autores span {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  .print_version {
+    display: block;
+  }
 }
-    #empezar:hover {
-       background-color: #fff;
-     }
-      #final{
-        width: 100%;
-        height: 100%;
-        display: none;
-        z-index: 10;
-        position: absolute;
-        margin: auto;
-        color: #fff;
-        text-align: center;
-        padding-top: 300px;
-        background-image: url("background.portada.png");
-    }
-
-    #final .enhorabuena{
-        font-size: 3em;
-    }
-
-    #final .gracias{
-        font-size: 2em;
-    }
-
-    #imprimir{
-        padding: 10px 20px;
-        width: 190px;
-        background-color: #cfc140;
-        color: #000;
-        font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: auto;
-        text-align: center;
-        margin-top: -0px;
-        z-index: 2;
-    }
-    
-    #imprimir:hover {
-        background-color: #fff;
-    }
-    
-    #imprimir:active {
-        background-color: tima;
-    }
-    
-
-    #tiempo{
-        color: #fff;
-        font-size: 4em;
-        margin:auto;
-    }
-
-    .css-5or4i1{
-        background: #333 !important;
-        height: 75vh;
-        overflow-y: scroll;
-        position: relative !important;
-        scrollbar-color: #fff #333; 
-        border-radius: 20px;
-        transition: 0.5s all linear;
-    }
-
-    .versos_seccion { background: #000 !important; }
-    .poema_seccion { background: #cfc140 !important; }
-
-
-    .poema_seccion:hover{
-        transition: 0.5s all linear;
-        background-color: #000 !important;
-
-    }
-
-    #root{
-        margin-top:  50px !important;
-    }
-
-
-    .css-bhp9pd-MuiPaper-root-MuiCard-root {
-        background-color: transparent !important;
-    }
-
-    .elemento{
-    border-radius: 14px !important;
-    padding: 5px 10px 5px 10px!important;
-    background: #fff !important;
-    }
-
-    .MuiCardContent-root span{
-        display: none;
-    }
-
-    .print_version {
-        display: none;
-    }
-
-
-   @media print {
-
-
-
-        .app_screen, #imprimir, #tiempo {
-            display: none !important;
-        }
-
-        .poema_impreso, .autores{
-            margin: 100px;
-        }
-
-        .poema_impreso span{
-            font-size: 1.7em;
-            font-weight: bold;
-        }
-
-        .poema_impreso ul li{
-            list-style: none;
-            font-size: 1.3em;
-        }
-
-        .autores{
-            margin-top: 100px;
-        }
-
-        .autores span{
-            font-size: 1.4em;
-            font-weight: bold;
-        }
-
-        .print_version {
-            display: block;
-
-        }
-    }   

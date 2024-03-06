@@ -1,13 +1,13 @@
 function printDiv(div) {
   audio.pause();
   //document.getElementById("final").style.display = "block";
-    /*var contenido= document.getElementById(div).innerHTML;
+  /*var contenido= document.getElementById(div).innerHTML;
     document.body.innerHTML = contenido;*/
-    document.documentElement.requestFullscreen();
-    window.print();
-    document.getElementById("final").style.display = "block";
+  document.documentElement.requestFullscreen();
+  window.print();
+  document.getElementById("final").style.display = "block";
 
-    setTimeout(() => {
-        document.location.reload();
-      }, 10000);
+  setTimeout(() => {
+    document.location.reload();
+  }, 10000);
 }

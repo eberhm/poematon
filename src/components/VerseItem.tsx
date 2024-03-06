@@ -1,7 +1,7 @@
-import React from 'react';
-import { CSS } from '@dnd-kit/utilities';
-import { TaskId } from '../types';
-import { useDraggable } from '@dnd-kit/core';
+import React from "react";
+import { CSS } from "@dnd-kit/utilities";
+import { TaskId } from "../types";
+import { useDraggable } from "@dnd-kit/core";
 
 type VerseItemProps = {
   children: React.ReactNode;
@@ -9,13 +9,8 @@ type VerseItemProps = {
 };
 
 const VerseItem = ({ children, id }: VerseItemProps) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    isDragging,
-  } = useDraggable({ id });
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),

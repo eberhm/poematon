@@ -1,9 +1,12 @@
-import React from 'react';
-import PoematonSectionList from './components/PoematonSectionList';
+import React from "react";
+import PoematonSectionList from "./components/PoematonSectionList";
 
 function App() {
-  return <><PoematonSectionList />
-  </>;
+  return (
+    <>
+      <PoematonSectionList />
+    </>
+  );
 }
 
 export default App;

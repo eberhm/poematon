@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import React, { useState } from "react";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import {
   useSensors,
   useSensor,
@@ -13,21 +13,20 @@ import {
   DragOverEvent,
   DragOverlay,
   defaultDropAnimation,
-} from '@dnd-kit/core';
-import { sortableKeyboardCoordinates, arrayMove } from '@dnd-kit/sortable';
-import { INITIAL_TASKS } from '../data';
-import { BoardSections as BoardSectionsType, Task, TaskId } from '../types';
-import { getVerseById } from '../utils/tasks';
-import { findBoardSectionContainer, initializeBoard } from '../utils/board';
-import TaskItem from './TaskItem';
-import VersesSection from './VersesSection';
-import PoemSection from './PoemSection';
+} from "@dnd-kit/core";
+import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
+import { INITIAL_TASKS } from "../data";
+import { BoardSections as BoardSectionsType, Task, TaskId } from "../types";
+import { getVerseById } from "../utils/tasks";
+import { findBoardSectionContainer, initializeBoard } from "../utils/board";
+import TaskItem from "./TaskItem";
+import VersesSection from "./VersesSection";
+import PoemSection from "./PoemSection";
 
 const initialBoardSections = initializeBoard();
 const availableVerses = INITIAL_TASKS;
 
 const PoematonSectionList = () => {
-
   const [boardSections, setBoardSections] =
     useState<BoardSectionsType>(initialBoardSections);
 
@@ -37,21 +36,23 @@ const PoematonSectionList = () => {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const handleDragStart = ({ active }: DragStartEvent) => {
-    setActiveTaskId(() => { return active.id as TaskId });
+    setActiveTaskId(() => {
+      return active.id as TaskId;
+    });
   };
 
   const handleDragOver = ({ active, over }: DragOverEvent) => {
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as TaskId
+      active.id as TaskId,
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as TaskId
+      over?.id as TaskId,
     );
 
     if (
@@ -63,21 +64,20 @@ const PoematonSectionList = () => {
     }
 
     setBoardSections((boardSection) => {
-            
       const getActiveContainerElements = () => {
         return [
           ...boardSection[activeContainer].filter(
-            (item) => item.id !== active.id
+            (item) => item.id !== active.id,
           ),
-        ]
-      }
+        ];
+      };
 
       const getOverContainerElements = () => {
         const activeItems = boardSection[activeContainer];
         const overItems = boardSection[overContainer];
 
         const activeIndex = activeItems.findIndex(
-          (item) => item.id === active.id
+          (item) => item.id === active.id,
         );
 
         const overIndex = overItems.findIndex((item) => item.id !== over?.id);
@@ -87,34 +87,32 @@ const PoematonSectionList = () => {
           boardSections[activeContainer][activeIndex],
           ...boardSection[overContainer].slice(
             overIndex,
-            boardSection[overContainer].length
+            boardSection[overContainer].length,
           ),
-        ]
-      }
+        ];
+      };
 
-      
       const newBoardSection = {
         ...boardSection,
         [activeContainer]: getActiveContainerElements(),
         [overContainer]: getOverContainerElements(),
-      }
+      };
 
       return {
         ...newBoardSection,
-        Versos: calculateVersosSectionByPoem(newBoardSection.Poema)
+        Versos: calculateVersosSectionByPoem(newBoardSection.Poema),
       };
     });
   };
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as TaskId
+      active.id as TaskId,
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as TaskId
+      over?.id as TaskId,
     );
 
     if (
@@ -126,84 +124,79 @@ const PoematonSectionList = () => {
     }
 
     const activeIndex = boardSections[activeContainer].findIndex(
-      (task) => task.id === active.id
+      (task) => task.id === active.id,
     );
     const overIndex = boardSections[overContainer].findIndex(
-      (task) => task.id === over?.id
+      (task) => task.id === over?.id,
     );
-      if (activeIndex !== overIndex) {
-      
-
+    if (activeIndex !== overIndex) {
       setBoardSections((boardSection) => {
         const newBoardSection = {
           ...boardSection,
           [overContainer]: arrayMove(
             boardSection[overContainer],
             activeIndex,
-            overIndex
-          )
-        } as const
+            overIndex,
+          ),
+        } as const;
 
-        return ({
+        return {
           ...newBoardSection,
-          Versos: calculateVersosSectionByPoem(newBoardSection.Poema)
-        })
+          Versos: calculateVersosSectionByPoem(newBoardSection.Poema),
+        };
       });
     }
 
     setActiveTaskId(null);
   };
 
-  const task = activeTaskId ? getVerseById(availableVerses, activeTaskId) : null;
+  const task = activeTaskId
+    ? getVerseById(availableVerses, activeTaskId)
+    : null;
 
   return (
     <>
-    <Container className='app_screen'>
+      <Container className="app_screen">
         <Grid container spacing={4}>
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCorners}
-          onDragStart={handleDragStart}
-          onDragOver={handleDragOver}
-          onDragEnd={handleDragEnd}
-        >
-          <Grid item xs={6} key="Versos">
-            <VersesSection
-              tasks={boardSections.Versos}
-            />
-          </Grid>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCorners}
+            onDragStart={handleDragStart}
+            onDragOver={handleDragOver}
+            onDragEnd={handleDragEnd}
+          >
+            <Grid item xs={6} key="Versos">
+              <VersesSection tasks={boardSections.Versos} />
+            </Grid>
 
-          <Grid item xs={6} key="Poema">
-            <PoemSection
-              tasks={boardSections["Poema"]}
-            />
-          </Grid>
+            <Grid item xs={6} key="Poema">
+              <PoemSection tasks={boardSections["Poema"]} />
+            </Grid>
 
-          <DragOverlay dropAnimation={{ ...defaultDropAnimation }}>
-            {task ? <TaskItem task={task} /> : null}
-          </DragOverlay>
-        </DndContext>
+            <DragOverlay dropAnimation={{ ...defaultDropAnimation }}>
+              {task ? <TaskItem task={task} /> : null}
+            </DragOverlay>
+          </DndContext>
         </Grid>
-    </Container>
-    <div className='print_version'>
-        <div className='poema_impreso'>
+      </Container>
+      <div className="print_version">
+        <div className="poema_impreso">
           <span>POEMATÓN. Tu Poema ready-made:</span>
           <ul>
-          { boardSections.Poema.map((autor) => {
-              return <li>{autor.verso}</li>
-            }) }
+            {boardSections.Poema.map((autor) => {
+              return <li>{autor.verso}</li>;
+            })}
           </ul>
         </div>
-        <div className='autores'>
+        <div className="autores">
           <span>Poema confeccionado con los versos de los autores:</span>
           <ul>
-          { boardSections.Poema.map((verso) => {
-              const metaData=[verso.autor]
-              verso.poema && metaData.push(verso.poema)
-              verso.poemario && metaData.push(verso.poemario)
-              return <li>{metaData.join(", ")}</li>
-            }) }
-
+            {boardSections.Poema.map((verso) => {
+              const metaData = [verso.autor];
+              verso.poema && metaData.push(verso.poema);
+              verso.poemario && metaData.push(verso.poemario);
+              return <li>{metaData.join(", ")}</li>;
+            })}
           </ul>
         </div>
       </div>
@@ -212,27 +205,29 @@ const PoematonSectionList = () => {
 };
 
 const calculateVersosSectionByPoem = (poema: Task[]) => {
-  return initialBoardSections.Versos.map(item => {
-    const id = poema.find(poemVerse => poemVerse.id === item.id) ? item.id + '-inPoem' + Date.now(): item.id
+  return initialBoardSections.Versos.map((item) => {
+    const id = poema.find((poemVerse) => poemVerse.id === item.id)
+      ? item.id + "-inPoem" + Date.now()
+      : item.id;
 
     return {
       ...item,
-      id
-    }
-  })
-}
+      id,
+    };
+  });
+};
 
 const getAuthors = (verses: Task[]) => {
-  const authors = Array.from(new Set(verses.map(verse => verse.autor)))
-  console.log(authors)
- return authors
-}
+  const authors = Array.from(new Set(verses.map((verse) => verse.autor)));
+  console.log(authors);
+  return authors;
+};
 
 const getPoema = (verses: Task[]) => {
-  var authors = Array.from(new Set(verses.map(verse => verse.autor)))
-  var poemario = Array.from(new Set(verses.map(verse1 => verse1.poemario)))
-  
- return  [authors, poemario]
-}
+  var authors = Array.from(new Set(verses.map((verse) => verse.autor)));
+  var poemario = Array.from(new Set(verses.map((verse1) => verse1.poemario)));
+
+  return [authors, poemario];
+};
 
 export default PoematonSectionList;
