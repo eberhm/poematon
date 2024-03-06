@@ -217,17 +217,4 @@ const calculateVersosSectionByPoem = (poema: Task[]) => {
   });
 };
 
-const getAuthors = (verses: Task[]) => {
-  const authors = Array.from(new Set(verses.map((verse) => verse.autor)));
-  console.log(authors);
-  return authors;
-};
-
-const getPoema = (verses: Task[]) => {
-  var authors = Array.from(new Set(verses.map((verse) => verse.autor)));
-  var poemario = Array.from(new Set(verses.map((verse1) => verse1.poemario)));
-
-  return [authors, poemario];
-};
-
 export default PoematonSectionList;
