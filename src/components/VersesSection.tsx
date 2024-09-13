@@ -6,6 +6,7 @@ import { Task } from "../types";
 import TaskItem from "./TaskItem";
 import VerseItem from "./VerseItem";
 
+
 type VersesSectionProps = {
   tasks: Task[];
 };
@@ -18,20 +19,22 @@ const VersesSection = ({ tasks }: VersesSectionProps) => {
   return (
     <Box
       sx={{ color: "#fff", backgroundColor: "#eee", padding: 2 }}
-      className="versos_seccion"
+      className="versos_seccion versos_container"
       id={"Versos"}
       ref={setNodeRef}
     >
-      <Typography variant="h6" sx={{ mb: 3 }}>
-        Versos
+      <Typography variant="h6" sx={{ mb: 3, textAlign: "center" }}>
+          VERSOS
       </Typography>
-      {tasks.map((task) => (
-        <Box key={task.id} sx={{ mb: 3 }}>
-          <VerseItem id={task.id}>
-            <TaskItem task={task} />
-          </VerseItem>
-        </Box>
-      ))}
+      <Box className="versos_list">
+        {tasks.map((task) => (
+          <Box key={task.id} sx={{ mb: 3 }}>
+            <VerseItem id={task.id}>
+              <TaskItem task={task} />
+            </VerseItem>
+          </Box>
+        ))}
+      </Box>
     </Box>
   );
 };

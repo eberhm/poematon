@@ -22,15 +22,15 @@ const PoemSection = ({ tasks }: PoemSectionProps) => {
   return (
     <Box
       sx={{ color: "#fff", backgroundColor: "#eee", padding: 2 }}
-      className="poema_seccion"
-      id={"Poema"}
-      ref={setNodeRef}
+      className="poema_seccion versos_container"
+      id={ "Poema" }
+      ref={  setNodeRef }
     >
-      <Typography variant="h6" sx={{ mb: 3 }}>
-        Poema
-      </Typography>
+      <Typography variant="h6" sx={{ mb: 3, textAlign: "center" }}>
+        TU POEMA
+      </Typography>    
       <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
-        <div>
+        <Box className="versos_list">
           {tasks.map((task) => (
             <Box key={task.id} sx={{ mb: 3 }}>
               <PoemItem id={task.id}>
@@ -38,8 +38,8 @@ const PoemSection = ({ tasks }: PoemSectionProps) => {
               </PoemItem>
             </Box>
           ))}
-        </div>
-      </SortableContext>
+        </Box>
+      </SortableContext>  
     </Box>
   );
 };

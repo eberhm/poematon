@@ -22,9 +22,11 @@ import { findBoardSectionContainer, initializeBoard } from "../utils/board";
 import TaskItem from "./TaskItem";
 import VersesSection from "./VersesSection";
 import PoemSection from "./PoemSection";
+import { Alert } from "@mui/material";
 
 const initialBoardSections = initializeBoard();
 const availableVerses = INITIAL_TASKS;
+const MAX_VERSES = 4
 
 const PoematonSectionList = () => {
   const [boardSections, setBoardSections] =
@@ -58,7 +60,8 @@ const PoematonSectionList = () => {
     if (
       !activeContainer ||
       !overContainer ||
-      activeContainer === overContainer
+      activeContainer === overContainer ||
+      (activeContainer === "Versos" && boardSections["Poema"].length >= MAX_VERSES)
     ) {
       return;
     }
@@ -106,6 +109,8 @@ const PoematonSectionList = () => {
   };
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    console.log('end dragging')
+
     const activeContainer = findBoardSectionContainer(
       boardSections,
       active.id as TaskId,
@@ -120,6 +125,7 @@ const PoematonSectionList = () => {
       !overContainer ||
       activeContainer !== overContainer
     ) {
+      console.log('returning')
       return;
     }
 
@@ -179,6 +185,7 @@ const PoematonSectionList = () => {
           </DndContext>
         </Grid>
       </Container>
+      { boardSections["Poema"].length >= MAX_VERSES ? <Alert severity="error">Has llegado al número máximo de versos, pero aún puedes reordenar tu poema o sustituir versos.</Alert> : null}
       <div className="print_version">
         <div className="poema_impreso">
           <span>POEMATÓN. Tu Poema ready-made:</span>
