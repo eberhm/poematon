@@ -1,4 +1,4 @@
-var seconds = 300; //número de segundos a contar
+var seconds = 60 * 2.5; //número de segundos a contar
 const audio = new Audio("sound/20s.mp3");
 var countdownTimer;
 
@@ -21,13 +21,27 @@ function secondPassed() {
   }
   document.getElementById("tiempo").innerHTML =
     minutes + ":" + remainingSeconds;
-  if (seconds == 0) {
+  if (seconds === 0) {
     clearInterval(countdownTimer);
     printDiv("Poema");
   } else {
     seconds--;
-    if (seconds == 20) {
+    if (seconds === 20) {
       audio.play();
     }
   }
+}
+
+function printDiv(div) {
+  audio.pause();
+  //document.getElementById("final").style.display = "block";
+  /*var contenido= document.getElementById(div).innerHTML;
+    document.body.innerHTML = contenido;*/
+  document.documentElement.requestFullscreen();
+  window.print();
+  document.getElementById("final").style.display = "block";
+
+  setTimeout(() => {
+    document.location.reload();
+  }, 10000);
 }

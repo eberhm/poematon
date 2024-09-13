@@ -195,16 +195,20 @@ strong.colorlist {
   margin: auto;
 }
 
-.css-5or4i1 {
+.versos_container {
   background: #333 !important;
   height: 75vh;
-  overflow-y: scroll;
   position: relative !important;
   scrollbar-color: #fff #333;
   border-radius: 20px;
   transition: 0.5s all linear;
 }
 
+.versos_list {
+  height: 65vh;
+  overflow-y: scroll;
+  scrollbar-color: #fff #333;
+}
 .versos_seccion {
   background: #000 !important;
 }
@@ -214,7 +218,6 @@ strong.colorlist {
 
 .poema_seccion:hover {
   transition: 0.5s all linear;
-  background-color: #000 !important;
 }
 
 #root {
