@@ -1,5 +1,6 @@
-var seconds = 60 * 2.5; //número de segundos a contar
-const audio = new Audio("sound/20s.mp3");
+var seconds = 30; //número de segundos a contar
+const audio = new Audio("./sound/20s.mp3");
+const music = new Audio("./sound/music.mp3");
 var countdownTimer;
 
 //document.oncontextmenu = function(){return false}
@@ -7,6 +8,7 @@ const boton = document.getElementById("empezar");
 const div = document.getElementById("inicial");
 
 boton.addEventListener("click", function () {
+  music.play();
   div.classList.add("ocultar");
   document.documentElement.requestFullscreen();
   countdownTimer = setInterval(secondPassed, 1000);
