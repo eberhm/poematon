@@ -22,7 +22,6 @@ import { findBoardSectionContainer, initializeBoard } from "../utils/board";
 import TaskItem from "./TaskItem";
 import VersesSection from "./VersesSection";
 import PoemSection from "./PoemSection";
-import { Alert } from "@mui/material";
 
 const initialBoardSections = initializeBoard();
 const availableVerses = INITIAL_TASKS;
@@ -172,7 +171,7 @@ const PoematonSectionList = () => {
             onDragEnd={handleDragEnd}
           >
             <Grid item xs={6} key="Versos">
-              <VersesSection tasks={boardSections.Versos} />
+              <VersesSection tasks={boardSections.Versos} isMax={boardSections["Poema"].length >= MAX_VERSES}/>
             </Grid>
 
             <Grid item xs={6} key="Poema">
@@ -185,7 +184,6 @@ const PoematonSectionList = () => {
           </DndContext>
         </Grid>
       </Container>
-      { boardSections["Poema"].length >= MAX_VERSES ? <Alert className="max_verses_alert" severity="error">Has llegado al número máximo de versos, pero aún puedes reordenar tu poema o sustituir versos.</Alert> : null}
       <div className="print_version">
         <div className="poema_impreso">
           <span>POEMATÓN. Tu Poema ready-made:</span>

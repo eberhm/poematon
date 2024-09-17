@@ -242,6 +242,9 @@ strong.colorlist {
   display: none;
 }
 
+.max_verses_alert {
+  margin-bottom: 25px;
+}
 @media print {
   .max_verses_alert,
   .app_screen,

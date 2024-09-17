@@ -5,13 +5,15 @@ import Typography from "@mui/material/Typography";
 import { Task } from "../types";
 import TaskItem from "./TaskItem";
 import VerseItem from "./VerseItem";
+import { Alert } from "@mui/material";
 
 
 type VersesSectionProps = {
   tasks: Task[];
+  isMax: boolean;
 };
 
-const VersesSection = ({ tasks }: VersesSectionProps) => {
+const VersesSection = ({ tasks, isMax }: VersesSectionProps) => {
   const { setNodeRef } = useDroppable({
     id: "Versos",
   });
@@ -26,6 +28,7 @@ const VersesSection = ({ tasks }: VersesSectionProps) => {
       <Typography variant="h6" sx={{ mb: 3, textAlign: "center" }}>
           VERSOS
       </Typography>
+      { isMax ? <Alert className="max_verses_alert" severity="error">Has llegado al número máximo de versos, pero aún puedes reordenar tu poema o sustituir versos.</Alert> : null}
       <Box className="versos_list">
         {tasks.map((task) => (
           <Box key={task.id} sx={{ mb: 3 }}>
