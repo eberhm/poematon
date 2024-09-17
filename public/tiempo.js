@@ -1,9 +1,10 @@
 var seconds = 30; //número de segundos a contar
 const audio = new Audio("./sound/20s.mp3");
+audio.volume = 0.6;
+
 const music = new Audio("./sound/music.mp3");
 var countdownTimer;
 
-//document.oncontextmenu = function(){return false}
 const boton = document.getElementById("empezar");
 const div = document.getElementById("inicial");
 
@@ -35,10 +36,10 @@ function secondPassed() {
 }
 
 function printDiv(div) {
+  clearInterval(countdownTimer);
   audio.pause();
-  //document.getElementById("final").style.display = "block";
-  /*var contenido= document.getElementById(div).innerHTML;
-    document.body.innerHTML = contenido;*/
+  music.pause();
+
   document.documentElement.requestFullscreen();
   window.print();
   document.getElementById("final").style.display = "block";
