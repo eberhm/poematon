@@ -154,7 +154,7 @@ strong.colorlist {
   margin: auto;
   color: #fff;
   text-align: center;
-  padding-top: 300px;
+  padding-top: 150px;
   background-image: url("background.portada.png");
 }
 
@@ -243,6 +243,7 @@ strong.colorlist {
 }
 
 @media print {
+  .max_verses_alert,
   .app_screen,
   #imprimir,
   #tiempo {
@@ -251,7 +252,7 @@ strong.colorlist {
 
   .poema_impreso,
   .autores {
-    margin: 100px;
+    margin: 10px 100px 100px 100px;
   }
 
   .poema_impreso span {
@@ -265,7 +266,7 @@ strong.colorlist {
   }
 
   .autores {
-    margin-top: 100px;
+    margin-top: 0px;
   }
 
   .autores span {

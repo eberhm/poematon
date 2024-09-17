@@ -26,7 +26,7 @@ import { Alert } from "@mui/material";
 
 const initialBoardSections = initializeBoard();
 const availableVerses = INITIAL_TASKS;
-const MAX_VERSES = 4
+const MAX_VERSES = 12
 
 const PoematonSectionList = () => {
   const [boardSections, setBoardSections] =
@@ -185,7 +185,7 @@ const PoematonSectionList = () => {
           </DndContext>
         </Grid>
       </Container>
-      { boardSections["Poema"].length >= MAX_VERSES ? <Alert severity="error">Has llegado al número máximo de versos, pero aún puedes reordenar tu poema o sustituir versos.</Alert> : null}
+      { boardSections["Poema"].length >= MAX_VERSES ? <Alert className="max_verses_alert" severity="error">Has llegado al número máximo de versos, pero aún puedes reordenar tu poema o sustituir versos.</Alert> : null}
       <div className="print_version">
         <div className="poema_impreso">
           <span>POEMATÓN. Tu Poema ready-made:</span>
@@ -196,7 +196,7 @@ const PoematonSectionList = () => {
           </ul>
         </div>
         <div className="autores">
-          <span>Poema confeccionado con los versos de los autores:</span>
+          <span>Poema confeccionado con los versos de los autores (autoría, poema):</span>
           <ul>
             {boardSections.Poema.map((verso) => {
               const metaData = [verso.autor];

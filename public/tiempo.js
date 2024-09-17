@@ -1,6 +1,6 @@
-var seconds = 30; //número de segundos a contar
+var seconds = 60 * 2.5; //número de segundos a contar
 const audio = new Audio("./sound/20s.mp3");
-audio.volume = 0.6;
+audio.volume = 0.4;
 
 const music = new Audio("./sound/music.mp3");
 var countdownTimer;
