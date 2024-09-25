@@ -245,6 +245,7 @@ strong.colorlist {
 .max_verses_alert {
   margin-bottom: 25px;
 }
+
 @media print {
   .max_verses_alert,
   .app_screen,
@@ -255,17 +256,17 @@ strong.colorlist {
 
   .poema_impreso,
   .autores {
-    margin: 10px 100px 100px 100px;
+    margin: 10px 100px 50px 100px;
   }
 
   .poema_impreso span {
-    font-size: 1.7em;
+    font-size: 1.5em;
     font-weight: bold;
   }
 
   .poema_impreso ul li {
     list-style: none;
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   .autores {
@@ -273,10 +274,13 @@ strong.colorlist {
   }
 
   .autores span {
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: bold;
   }
 
+    .autores ul li {
+      font-size: 1.1em;
+    }
   .print_version {
     display: block;
   }
