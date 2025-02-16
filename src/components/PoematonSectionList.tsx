@@ -15,23 +15,23 @@ import {
   defaultDropAnimation,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
-import { INITIAL_TASKS } from "../data";
-import { BoardSections as BoardSectionsType, Task, TaskId } from "../types";
-import { getVerseById } from "../utils/tasks";
+import { INITIAL_VERSES } from "../data";
+import { BoardSections as BoardSectionsType, Verse, VerseId } from "../types";
+import { getVerseById } from "../utils/verse";
 import { findBoardSectionContainer, initializeBoard } from "../utils/board";
-import TaskItem from "./TaskItem";
+import VerseCard from "./VerseCard";
 import VersesSection from "./VersesSection";
 import PoemSection from "./PoemSection";
 
 const initialBoardSections = initializeBoard();
-const availableVerses = INITIAL_TASKS;
+const availableVerses = INITIAL_VERSES;
 const MAX_VERSES = 12
 
 const PoematonSectionList = () => {
   const [boardSections, setBoardSections] =
     useState<BoardSectionsType>(initialBoardSections);
 
-  const [activeTaskId, setActiveTaskId] = useState<null | TaskId>(null);
+  const [activeVerseId, setActiveVerseId] = useState<null | VerseId>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -41,19 +41,19 @@ const PoematonSectionList = () => {
   );
 
   const handleDragStart = ({ active }: DragStartEvent) => {
-    setActiveTaskId(() => {
-      return active.id as TaskId;
+    setActiveVerseId(() => {
+      return active.id as VerseId;
     });
   };
 
   const handleDragOver = ({ active, over }: DragOverEvent) => {
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as TaskId,
+      active.id as VerseId,
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as TaskId,
+      over?.id as VerseId,
     );
 
     if (
@@ -112,11 +112,11 @@ const PoematonSectionList = () => {
 
     const activeContainer = findBoardSectionContainer(
       boardSections,
-      active.id as TaskId,
+      active.id as VerseId,
     );
     const overContainer = findBoardSectionContainer(
       boardSections,
-      over?.id as TaskId,
+      over?.id as VerseId,
     );
 
     if (
@@ -129,10 +129,10 @@ const PoematonSectionList = () => {
     }
 
     const activeIndex = boardSections[activeContainer].findIndex(
-      (task) => task.id === active.id,
+      (verse) => verse.id === active.id,
     );
     const overIndex = boardSections[overContainer].findIndex(
-      (task) => task.id === over?.id,
+      (verse) => verse.id === over?.id,
     );
     if (activeIndex !== overIndex) {
       setBoardSections((boardSection) => {
@@ -152,11 +152,11 @@ const PoematonSectionList = () => {
       });
     }
 
-    setActiveTaskId(null);
+    setActiveVerseId(null);
   };
 
-  const task = activeTaskId
-    ? getVerseById(availableVerses, activeTaskId)
+  const verse = activeVerseId
+    ? getVerseById(availableVerses, activeVerseId)
     : null;
 
   return (
@@ -171,15 +171,15 @@ const PoematonSectionList = () => {
             onDragEnd={handleDragEnd}
           >
             <Grid item xs={6} key="Versos">
-              <VersesSection tasks={boardSections.Versos} isMax={boardSections["Poema"].length >= MAX_VERSES}/>
+              <VersesSection verses={boardSections.Versos} isMax={boardSections["Poema"].length >= MAX_VERSES}/>
             </Grid>
 
             <Grid item xs={6} key="Poema">
-              <PoemSection tasks={boardSections["Poema"]} />
+              <PoemSection verses={boardSections["Poema"]} />
             </Grid>
 
             <DragOverlay dropAnimation={{ ...defaultDropAnimation }}>
-              {task ? <TaskItem task={task} /> : null}
+              {verse ? <VerseCard verse={verse} /> : null}
             </DragOverlay>
           </DndContext>
         </Grid>
@@ -189,7 +189,7 @@ const PoematonSectionList = () => {
           <span>POEMATÓN. Tu Poema ready-made:</span>
           <ul>
             {boardSections.Poema.map((autor) => {
-              return <li>{autor.verso}</li>;
+              return <li>{autor.value}</li>;
             })}
           </ul>
         </div>
@@ -209,7 +209,7 @@ const PoematonSectionList = () => {
   );
 };
 
-const calculateVersosSectionByPoem = (poema: Task[]) => {
+const calculateVersosSectionByPoem = (poema: Verse[]) => {
   return initialBoardSections.Versos.map((item) => {
     const id = poema.find((poemVerse) => poemVerse.id === item.id)
       ? item.id + "-inPoem" + Date.now()

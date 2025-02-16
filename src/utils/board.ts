@@ -1,9 +1,9 @@
-import { BoardSections, TaskId } from "../types";
-import { INITIAL_TASKS } from "../data";
+import { BoardSections, VerseId } from "../types";
+import { INITIAL_VERSES } from "../data";
 
 export const initializeBoard = (): BoardSections => {
   return {
-    Versos: arrayShuffle(INITIAL_TASKS),
+    Versos: arrayShuffle(INITIAL_VERSES),
     Poema: [],
   };
 };
@@ -16,7 +16,7 @@ const arrayShuffle = (arr: Array<any>) =>
 
 export const findBoardSectionContainer = (
   boardSections: BoardSections,
-  id: TaskId,
+  id: VerseId
 ) => {
   if (id in boardSections) {
     // why do we need this???
@@ -24,7 +24,7 @@ export const findBoardSectionContainer = (
   }
 
   const container = (["Versos", "Poema"] as const).find((key) =>
-    boardSections[key].find((item) => item.id === id),
+    boardSections[key].find((item) => item.id === id)
   );
   return container;
 };

@@ -1,13 +1,13 @@
-export type TaskId = string;
-export type Task = {
-  id: TaskId;
-  verso: string;
+export type VerseId = string;
+export type Verse = {
+  id: VerseId;
+  value: string;
   autor: string;
   poema: string;
   poemario: string;
 };
 
 export type BoardSections = {
-  Versos: Task[];
-  Poema: Task[];
+  Versos: Verse[];
+  Poema: Verse[];
 };

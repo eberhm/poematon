@@ -1,11 +1,11 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { TaskId } from "../types";
+import { VerseId } from "../types";
 
 type PoemItemProps = {
   children: React.ReactNode;
-  id: TaskId;
+  id: VerseId;
 };
 
 const PoemItem = ({ children, id }: PoemItemProps) => {

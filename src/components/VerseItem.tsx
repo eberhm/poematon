@@ -1,11 +1,11 @@
 import React from "react";
 import { CSS } from "@dnd-kit/utilities";
-import { TaskId } from "../types";
+import { VerseId } from "../types";
 import { useDraggable } from "@dnd-kit/core";
 
 type VerseItemProps = {
   children: React.ReactNode;
-  id: TaskId;
+  id: VerseId;
 };
 
 const VerseItem = ({ children, id }: VerseItemProps) => {
