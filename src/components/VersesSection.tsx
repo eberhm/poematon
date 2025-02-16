@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { useDroppable } from "@dnd-kit/core";
 import Typography from "@mui/material/Typography";
 import { Verse } from "../types";
-import VerseCard from "./TaskItem";
+import VerseCard from "./VerseCard";
 import VerseItem from "./VerseItem";
 import { Alert } from "@mui/material";
 

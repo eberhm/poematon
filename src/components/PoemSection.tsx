@@ -8,7 +8,7 @@ import {
 import Typography from "@mui/material/Typography";
 import { Verse } from "../types";
 import PoemItem from "./PoemItem";
-import VerseCard from "./TaskItem";
+import VerseCard from "./VerseCard";
 
 type PoemSectionProps = {
   verses: Verse[];

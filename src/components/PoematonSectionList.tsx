@@ -17,9 +17,9 @@ import {
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
 import { INITIAL_VERSES } from "../data";
 import { BoardSections as BoardSectionsType, Verse, VerseId } from "../types";
-import { getVerseById } from "../utils/tasks";
+import { getVerseById } from "../utils/verse";
 import { findBoardSectionContainer, initializeBoard } from "../utils/board";
-import VerseCard from "./TaskItem";
+import VerseCard from "./VerseCard";
 import VersesSection from "./VersesSection";
 import PoemSection from "./PoemSection";
 
