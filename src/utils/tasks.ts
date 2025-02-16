@@ -1,5 +1,5 @@
-import { Task, TaskId } from "../types";
+import { Verse, VerseId } from "../types";
 
-export const getVerseById = (tasks: Task[], id: TaskId) => {
-  return tasks.find((task) => task.id === id.split("-inPoem")[0]);
+export const getVerseById = (verses: Verse[], id: VerseId) => {
+  return verses.find((verse) => verse.id === id.split("-inPoem")[0]);
 };

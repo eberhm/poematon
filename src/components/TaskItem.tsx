@@ -1,19 +1,19 @@
 import { Card, CardContent } from "@mui/material";
-import { Task } from "../types";
+import { Verse } from "../types";
 
-type TaskItemProps = {
-  task: Task;
+type VerseCardProps = {
+  verse: Verse;
 };
 
-const TaskItem = ({ task }: TaskItemProps) => {
+const VerseCard = ({ verse }: VerseCardProps) => {
   return (
     <Card sx={{ boxShadow: "none" }}>
       <CardContent className="elemento">
-        <span>{task.autor}</span>
-        {task.verso}
+        <span>{verse.autor}</span>
+        {verse.value}
       </CardContent>
     </Card>
   );
 };
 
-export default TaskItem;
+export default VerseCard;

@@ -6,15 +6,15 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import Typography from "@mui/material/Typography";
-import { Task } from "../types";
+import { Verse } from "../types";
 import PoemItem from "./PoemItem";
-import TaskItem from "./TaskItem";
+import VerseCard from "./TaskItem";
 
 type PoemSectionProps = {
-  tasks: Task[];
+  verses: Verse[];
 };
 
-const PoemSection = ({ tasks }: PoemSectionProps) => {
+const PoemSection = ({ verses }: PoemSectionProps) => {
   const { setNodeRef } = useDroppable({
     id: "Poema",
   });
@@ -29,12 +29,12 @@ const PoemSection = ({ tasks }: PoemSectionProps) => {
       <Typography variant="h6" sx={{ mb: 3, textAlign: "center" }}>
         TU POEMA
       </Typography>    
-      <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
+      <SortableContext items={verses} strategy={verticalListSortingStrategy}>
         <Box className="versos_list">
-          {tasks.map((task) => (
-            <Box key={task.id} sx={{ mb: 3 }}>
-              <PoemItem id={task.id}>
-                <TaskItem task={task} />
+          {verses.map((verse) => (
+            <Box key={verse.id} sx={{ mb: 3 }}>
+              <PoemItem id={verse.id}>
+                <VerseCard verse={verse} />
               </PoemItem>
             </Box>
           ))}
