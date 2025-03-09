@@ -1,4 +1,4 @@
-var seconds = (2 * 60) + 15; //número de segundos a contar
+var seconds = (3 * 60); //número de segundos a contar (3 mins)
 const audio = new Audio("./sound/20s.mp3");
 audio.volume = 0.4;
 

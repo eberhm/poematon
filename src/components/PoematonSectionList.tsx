@@ -25,7 +25,7 @@ import PoemSection from "./PoemSection";
 
 const initialBoardSections = initializeBoard();
 const availableVerses = INITIAL_VERSES;
-const MAX_VERSES = 12
+const MAX_VERSES = 8
 
 const PoematonSectionList = () => {
   const [boardSections, setBoardSections] =
@@ -145,10 +145,14 @@ const PoematonSectionList = () => {
           ),
         } as const;
 
-        return {
+        const result = {
           ...newBoardSection,
           Versos: calculateVersosSectionByPoem(newBoardSection.Poema),
-        };
+        }
+
+        window.Versos = result.Versos
+
+        return result;
       });
     }
 
