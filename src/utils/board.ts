@@ -1,9 +1,8 @@
-import { BoardSections, VerseId } from "../types";
-import { INITIAL_VERSES } from "../data";
+import { BoardSections, Verse, VerseId } from "../types";
 
-export const initializeBoard = (): BoardSections => {
+export const initializeBoard = (verses: Verse[]): BoardSections => {
   return {
-    Versos: arrayShuffle(INITIAL_VERSES),
+    Versos: arrayShuffle(verses),
     Poema: [],
   };
 };

@@ -8,6 +8,9 @@ var countdownTimer;
 const boton = document.getElementById("empezar");
 const div = document.getElementById("inicial");
 
+const params = new URLSearchParams(window.location.search);
+const videoServer = params.get('videoServer') || '';
+
 boton.addEventListener("click", function () {
   music.play();
   div.classList.add("ocultar");
@@ -44,7 +47,38 @@ function printDiv(div) {
   window.print();
   document.getElementById("final").style.display = "block";
 
+  sendToRemote();
+
   setTimeout(() => {
     document.location.reload();
   }, 10000);
+}
+
+
+function sendToRemote() {
+  if (!videoServer || !window.poem) {
+    console.log('Video server URL not provided or poem not found');
+    return;
+  }
+
+  try {
+    fetch(videoServer, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(window.poem)
+    })
+    .then(response => {
+      if (!(response.status >= 200 && response.status < 300)) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      console.log('Data sent successfully to video server');
+    })
+    .catch(error => {
+      console.error('Error sending data to video server:', error);
+    });
+  } catch (error) {
+    console.error('Failed to send data:', error);
+  }
 }

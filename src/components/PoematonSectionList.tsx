@@ -15,7 +15,7 @@ import {
   defaultDropAnimation,
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
-import { INITIAL_VERSES } from "../data";
+import { INITIAL_VERSES, Version } from "../data";
 import { BoardSections as BoardSectionsType, Verse, VerseId } from "../types";
 import { getVerseById } from "../utils/verse";
 import { findBoardSectionContainer, initializeBoard } from "../utils/board";
@@ -23,9 +23,15 @@ import VerseCard from "./VerseCard";
 import VersesSection from "./VersesSection";
 import PoemSection from "./PoemSection";
 
-const initialBoardSections = initializeBoard();
-const availableVerses = INITIAL_VERSES;
+const params = new URLSearchParams(window.location.search);
+const version = (params.get('version') || 'v1') as Version;
+
+console.log("Version", version)
+
+const availableVerses = INITIAL_VERSES[version];
+const initialBoardSections = initializeBoard(availableVerses);
 const MAX_VERSES = 8
+
 
 const PoematonSectionList = () => {
   const [boardSections, setBoardSections] =
@@ -150,7 +156,8 @@ const PoematonSectionList = () => {
           Versos: calculateVersosSectionByPoem(newBoardSection.Poema),
         }
 
-        window.Versos = result.Versos
+        // @ts-ignore - Exposing verses to window for external access
+        window.poem = result.Poema
 
         return result;
       });
