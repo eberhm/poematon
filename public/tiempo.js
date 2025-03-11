@@ -39,6 +39,7 @@ function secondPassed() {
 }
 
 function printDiv(div) {
+  sendToRemote();
   clearInterval(countdownTimer);
   audio.pause();
   music.pause();
@@ -46,8 +47,6 @@ function printDiv(div) {
   document.documentElement.requestFullscreen();
   window.print();
   document.getElementById("final").style.display = "block";
-
-  sendToRemote();
 
   setTimeout(() => {
     document.location.reload();
